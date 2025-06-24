@@ -1,26 +1,22 @@
 const Skills = () => {
-  const techCategories = [
-    {
-      title: "Frontend",
-      color: "neon-green",
-      technologies: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5", "CSS3"]
-    },
-    {
-      title: "Styling & UI",
-      color: "neon-blue",
-      technologies: ["Tailwind CSS", "Figma"]
-    },
-    {
-      title: "Backend & Database",
-      color: "neon-purple",
-      technologies: ["Node.js", "Express.js", "MongoDB", "PostgreSQL", "Firebase"]
-    },
-    {
-      title: "Tools & Testing",
-      color: "neon-green",
-      technologies: ["Git", "Vite",  "Socket.io"]
-    }
+  const technologies = [
+    { name: "React", color: "neon-green", icon: "⚛️" },
+    { name: "Next.js", color: "neon-blue", icon: "▲" },
+    { name: "TypeScript", color: "neon-purple", icon: "📘" },
+    { name: "JavaScript", color: "neon-green", icon: "🟡" },
+    { name: "Node.js", color: "neon-green", icon: "🟢" },
+    { name: "Express.js", color: "neon-blue", icon: "🚀" },
+    { name: "MongoDB", color: "neon-purple", icon: "🍃" },
+    { name: "PostgreSQL", color: "neon-blue", icon: "🐘" },
+    { name: "Firebase", color: "neon-purple", icon: "🔥" },
+    { name: "Tailwind CSS", color: "neon-green", icon: "🎨" },
+    { name: "HTML5", color: "neon-blue", icon: "🌐" },
+    { name: "CSS3", color: "neon-purple", icon: "🎯" },
+    { name: "Git", color: "neon-green", icon: "📚" },
+    { name: "Vite", color: "neon-blue", icon: "⚡" },
+    { name: "Socket.io", color: "neon-purple", icon: "🔌" }
   ];
+  const duplicatedTech = [...technologies, ...technologies];
 
   return (
     <section id="skills" className="py-20 bg-background relative overflow-hidden">
@@ -41,51 +37,65 @@ const Skills = () => {
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Technologies I use to build modern, scalable, and performant web applications
           </p>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-          {techCategories.map((category, categoryIndex) => (
-            <div
-              key={category.title}
-              className="bg-card/30 backdrop-blur-sm border border-border/30 rounded-xl p-6 group hover:border-primary/50 transition-all duration-300 hover:bg-card/50"
-              style={{ animationDelay: `${categoryIndex * 150}ms` }}
-            >
-              <div className="text-center mb-6">
-                <h3 className={`font-orbitron font-bold text-lg mb-2 text-${category.color}`}>
-                  {category.title}
-                </h3>
-                <div className={`h-0.5 w-16 bg-gradient-to-r from-${category.color} to-${category.color}/50 mx-auto`}></div>
+        </div>        
+        <div className="relative w-full overflow-hidden">
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background to-transparent z-10"></div>
+          <div className="flex animate-[scroll_30s_linear_infinite] hover:[animation-play-state:paused]">
+            {duplicatedTech.map((tech, index) => (
+              <div
+                key={`${tech.name}-${index}`}
+                className="group/tech flex-shrink-0 mx-4"
+              >
+                <div className={`
+                  relative bg-card/50 backdrop-blur-sm border border-${tech.color}/30
+                  hover:border-${tech.color}/60 hover:bg-card/70 transition-all duration-300
+                  hover:shadow-lg hover:shadow-${tech.color}/20 rounded-lg px-6 py-4
+                  flex items-center space-x-3 cursor-pointer group-hover/tech:scale-105
+                `}>
+                  <span className="text-2xl group-hover/tech:scale-110 transition-transform duration-200">
+                    {tech.icon}
+                  </span>
+                  <span className={`
+                    font-medium text-${tech.color} whitespace-nowrap
+                    group-hover/tech:text-white transition-colors duration-300
+                  `}>
+                    {tech.name}
+                  </span>
+                </div>
               </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                {category.technologies.map((tech, techIndex) => (
-                  <div
-                    key={tech}
-                    className="group/tech hover:scale-105 transition-all duration-300"
-                    style={{ animationDelay: `${(categoryIndex * 6 + techIndex) * 100}ms` }}
-                  >
-                    <div className={`
-                      relative bg-card/50 backdrop-blur-sm border border-${category.color}/30
-                      hover:border-${category.color}/60 hover:bg-card/70 transition-all duration-300
-                      hover:shadow-lg hover:shadow-${category.color}/20 rounded-lg p-3 min-h-[60px]
-                      flex items-center justify-center
-                    `}>
-                      <span className={`
-                        font-medium text-xs text-center text-${category.color}
-                        group-hover/tech:text-white transition-colors duration-300
-                        leading-tight
-                      `}>
-                        {tech}
-                      </span>
-                    </div>
-                  </div>
-                ))}
+            ))}
+          </div>
+          <div className="flex animate-[scroll_25s_linear_infinite_reverse] hover:[animation-play-state:paused] mt-8">
+            {duplicatedTech.reverse().map((tech, index) => (
+              <div
+                key={`${tech.name}-reverse-${index}`}
+                className="group/tech flex-shrink-0 mx-4"
+              >
+                <div className={`
+                  relative bg-card/50 backdrop-blur-sm border border-${tech.color}/30
+                  hover:border-${tech.color}/60 hover:bg-card/70 transition-all duration-300
+                  hover:shadow-lg hover:shadow-${tech.color}/20 rounded-lg px-6 py-4
+                  flex items-center space-x-3 cursor-pointer group-hover/tech:scale-105
+                `}>
+                  <span className="text-2xl group-hover/tech:scale-110 transition-transform duration-200">
+                    {tech.icon}
+                  </span>
+                  <span className={`
+                    font-medium text-${tech.color} whitespace-nowrap
+                    group-hover/tech:text-white transition-colors duration-300
+                  `}>
+                    {tech.name}
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 };
+
 
 export default Skills;

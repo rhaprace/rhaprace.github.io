@@ -1,5 +1,5 @@
-import { ExternalLink, User, ArrowDown } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { Linkedin, Github, ArrowDown } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
 
 const Hero = () => {
   const skills = [
@@ -12,8 +12,34 @@ const Hero = () => {
     'NODE.JS',
     'FRONTEND'
   ];
+  const techIcons = useMemo(() => [
+    '</>',
+    '{}',
+    '[]',
+    '#',
+    '<div>',
+    'JS',
+    'TS',
+    'npm',
+    'git',
+    'React',
+    '()',
+    '&&',
+    '=>',
+    'HTML',
+    'CSS'
+  ], []);
 
-  const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
+  const [currentSkillIndex, setCurrentSkillIndex] = useState(0);  const [floatingIcons, setFloatingIcons] = useState<{ 
+    icon: string; 
+    style: {
+      left: string;
+      top: string;
+      animationDuration: string;
+      animationDelay: string;
+      opacity: number;
+    };
+  }[]>([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -22,6 +48,20 @@ const Hero = () => {
 
     return () => clearInterval(interval);
   }, [skills.length]);
+
+  useEffect(() => {
+    const icons = techIcons.map((icon: string) => ({
+      icon,
+      style: {
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDuration: `${6 + Math.random() * 6}s`,
+        animationDelay: `-${Math.random() * 20}s`,
+        opacity: 0.1,
+      },
+    }));
+    setFloatingIcons(icons);
+  }, [techIcons]);
 
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
@@ -40,6 +80,20 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/90"></div>
+      <div className="absolute inset-0 overflow-hidden">
+        {floatingIcons.map((item, index) => (
+          <div
+            key={index}
+            className="absolute font-mono text-lg md:text-xl animate-float"
+            style={{
+              ...item.style,
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            {item.icon}
+          </div>
+        ))}
+      </div>
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-grid"></div>
         <div className="absolute top-20 left-10 w-32 h-20 border border-neon-green/20 rounded-lg transform rotate-12"></div>
@@ -49,7 +103,6 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/4 w-16 h-24 border border-neon-blue/20 rounded transform rotate-45"></div>
         <div className="absolute top-1/3 right-1/3 w-24 h-16 border border-neon-purple/20 rounded transform -rotate-30"></div>
       </div>
-
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="space-y-12">
           <div className="space-y-6">
@@ -82,20 +135,12 @@ const Hero = () => {
           </div>
           <div className="flex justify-center space-x-6">
             <a
-              href="https://www.facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 bg-card/50 backdrop-blur-sm border border-border/50 flex items-center justify-center rounded-lg hover:border-neon-blue/50 hover:text-neon-blue transition-all duration-300 group"
-            >
-              <ExternalLink className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
-            </a>
-            <a
               href="https://www.linkedin.com/in/rafael-race-54033719b"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-card/50 backdrop-blur-sm border border-border/50 flex items-center justify-center rounded-lg hover:border-neon-blue/50 hover:text-neon-blue transition-all duration-300 group"
             >
-              <User className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
+              <Linkedin className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
             </a>
             <a
               href="https://github.com/rhaprace"
@@ -103,7 +148,7 @@ const Hero = () => {
               rel="noopener noreferrer"
               className="w-12 h-12 bg-card/50 backdrop-blur-sm border border-border/50 flex items-center justify-center rounded-lg hover:border-neon-blue/50 hover:text-neon-blue transition-all duration-300 group"
             >
-              <ExternalLink className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
+              <Github className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
             </a>
           </div>
         </div>

@@ -1,9 +1,70 @@
-import { Mail, MapPin, Phone, Github, Linkedin } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
+import { Mail, MapPin, Phone, Github, Linkedin, Code, Heart } from 'lucide-react';
 
 const Footer = () => {
+  const floatingElements = useMemo(() => [
+    { icon: Code, size: 'lg', color: 'neon-blue' },
+    { icon: Heart, size: 'sm', color: 'neon-purple' },
+    { icon: Github, size: 'md', color: 'neon-green' },
+    { icon: Code, size: 'sm', color: 'neon-blue' },
+    { icon: Heart, size: 'lg', color: 'neon-purple' },
+    { icon: Linkedin, size: 'md', color: 'neon-green' },
+  ], []);
+
+  const [floatingIcons, setFloatingIcons] = useState<{
+    Icon: typeof Code;
+    style: {
+      left: string;
+      top: string;
+      animationDuration: string;
+      animationDelay: string;
+      opacity: number;
+      size: string;
+      color: string;
+    };
+  }[]>([]);
+
+  useEffect(() => {
+    const icons = floatingElements.map(({ icon, size, color }) => ({
+      Icon: icon,
+      style: {
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDuration: `${8 + Math.random() * 8}s`,
+        animationDelay: `-${Math.random() * 20}s`,
+        opacity: 0.05,
+        size: size === 'sm' ? '2rem' : size === 'md' ? '3rem' : '4rem',
+        color,
+      },
+    }));
+    setFloatingIcons(icons);
+  }, [floatingElements]);
+
   return (
-    <footer className="bg-background border-t border-border/30 py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-background border-t border-border/30 py-16 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background/90"></div>
+      <div className="absolute inset-0">
+        {floatingIcons.map((item, index) => (
+          <div
+            key={index}
+            className="absolute animate-float-slow"
+            style={{
+              ...item.style,
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <item.Icon 
+              style={{ 
+                width: item.style.size, 
+                height: item.style.size 
+              }} 
+              className={`text-${item.style.color}`} 
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div>
             <h3 className="font-orbitron font-bold text-xl text-white mb-4">About Me</h3>

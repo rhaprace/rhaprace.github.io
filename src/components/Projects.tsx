@@ -1,7 +1,22 @@
 import { ExternalLink, Github, ShoppingCart, Calendar, Dumbbell } from 'lucide-react';
+import { useState, useEffect, useMemo } from 'react';
+
+interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  github: string;
+  live: string;
+  category: string;
+  icon: React.ElementType;
+  featured: boolean;
+  image?: string;
+}
 
 const Projects = () => {
-  const projects = [
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+
+  const projects = useMemo<Project[]>(() => [
     {
       title: "Full-Stack Event Management Platform",
       description: "A comprehensive web application built with React.js and Node.js that enables educational institutions to efficiently manage events, registrations, and user roles. Features real-time notifications, secure authentication, file uploads, analytics dashboards, and role-based access control for admins, organizers, and students.",
@@ -33,89 +48,207 @@ const Projects = () => {
       icon: Dumbbell,
       featured: true
     },
-  ];
+  ], []);
+
+  const categories = useMemo(() => {
+    const cats = ['All', ...new Set(projects.map(p => p.category))];
+    return cats;
+  }, [projects]);
+
+  const filteredProjects = useMemo(() => {
+    if (selectedCategory === 'All') return projects;
+    return projects.filter(p => p.category === selectedCategory);
+  }, [projects, selectedCategory]);
+
+  const floatingElements = useMemo(() => [
+    { type: 'window', size: 'lg', content: '<div>' },
+    { type: 'window', size: 'md', content: 'const' },
+    { type: 'window', size: 'sm', content: '{ }' },
+    { type: 'editor', size: 'lg', content: '</>' },
+    { type: 'terminal', size: 'md', content: '$_' },
+    { type: 'window', size: 'sm', content: '()' },
+    { type: 'editor', size: 'md', content: 'npm' },
+    { type: 'terminal', size: 'sm', content: '>' },
+  ], []);
+
+  const [floatingShapes, setFloatingShapes] = useState<{
+    type: string;
+    content: string;
+    style: {
+      left: string;
+      top: string;
+      width: string;
+      height: string;
+      animationDuration: string;
+      animationDelay: string;
+      opacity: number;
+    };
+  }[]>([]);
+
+  useEffect(() => {
+    const shapes = floatingElements.map(({ type, size, content }) => ({
+      type,
+      content,
+      style: {
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        width: size === 'sm' ? '100px' : size === 'md' ? '150px' : '200px',
+        height: size === 'sm' ? '60px' : size === 'md' ? '80px' : '100px',
+        animationDuration: `${8 + Math.random() * 8}s`,
+        animationDelay: `-${Math.random() * 20}s`,
+        opacity: 0.1,
+      },
+    }));
+    setFloatingShapes(shapes);
+  }, [floatingElements]);
 
   return (
-    <section id="projects" className="py-20 bg-muted/30 relative">
-      <div className="absolute inset-0 bg-grid opacity-5"></div>
+    <section 
+      id="projects" 
+      className="py-20 relative overflow-hidden"
+      aria-label="Projects Section"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/90"></div>
+      <div className="absolute inset-0">
+        {floatingShapes.map((shape, index) => (
+          <div
+            key={index}
+            className="absolute border border-neon-blue/20 rounded-lg backdrop-blur-sm animate-float-slow"
+            style={{
+              ...shape.style,
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <div className="h-6 bg-card/30 border-b border-neon-blue/20 flex items-center px-3">
+              <div className="flex space-x-1.5">
+                <div className="w-2 h-2 rounded-full bg-neon-purple/20" />
+                <div className="w-2 h-2 rounded-full bg-neon-blue/20" />
+                <div className="w-2 h-2 rounded-full bg-neon-green/20" />
+              </div>
+            </div>
+            <div className="p-3 font-mono text-sm">
+              {shape.content}
+            </div>
+          </div>
+        ))}
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="font-orbitron font-bold text-3xl md:text-5xl mb-4">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue to-neon-purple">
-              MY PROJECTS
-            </span>
+          <h2 className="font-orbitron font-bold text-3xl md:text-5xl mb-6" tabIndex={0}>
+            PROJECTS
           </h2>
-          <div className="h-1 w-32 bg-gradient-to-r from-neon-blue to-neon-purple mx-auto mb-6"></div>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A collection of web applications and development projects I've built
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8" tabIndex={0}>
+            Here are some of my featured projects that showcase my skills and experience
           </p>
+          <div className="flex flex-wrap justify-center gap-3 mb-8" role="group" aria-label="Project category filters">
+            {categories.map(category => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-lg border transition-all duration-300 text-sm 
+                  ${selectedCategory === category 
+                    ? 'border-neon-blue text-neon-blue bg-neon-blue/10' 
+                    : 'border-border/50 text-muted-foreground hover:border-neon-blue/50 hover:text-neon-blue'}`}
+                aria-pressed={selectedCategory === category}
+                aria-label={`Filter by ${category} projects`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+
+        <div 
+          className="grid md:grid-cols-2 gap-8 auto-rows-fr"
+          role="list"
+          aria-label="Projects grid"
+        >
+          {filteredProjects.map((project, index) => (
             <div
               key={project.title}
-              className="bg-card/30 backdrop-blur-sm border border-border/30 rounded-lg p-6 group hover:border-primary/50 transition-all duration-300 hover:bg-card/50 flex flex-col h-full min-h-[280px]"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="bg-card/30 backdrop-blur-sm border border-border/30 rounded-lg p-6 group hover:border-primary/50 transition-all duration-300 hover:bg-card/50 flex flex-col"
+              style={{
+                opacity: 0,
+                animation: `fade-in 0.5s ease-out forwards ${index * 0.1}s`
+              }}
+              role="listitem"
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center space-x-3 min-w-0 flex-1">
-                  <project.icon className="h-6 w-6 text-primary group-hover:animate-glow-pulse flex-shrink-0" />
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300" aria-hidden="true">
+                    <project.icon className="h-6 w-6 text-primary group-hover:animate-pulse" />
+                  </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-orbitron font-semibold text-base text-primary truncate">
+                    <h3 className="font-orbitron font-semibold text-base text-primary truncate" tabIndex={0}>
                       {project.title}
                     </h3>
-                    <span className="text-xs text-muted-foreground">{project.category}</span>
+                    <span className="text-xs text-muted-foreground" role="doc-subtitle">{project.category}</span>
                   </div>
                 </div>
                 <div className="flex space-x-2 flex-shrink-0 ml-2">
-                  <a
-                    href={project.github}
-                    className="text-muted-foreground hover:text-neon-green transition-colors duration-300"
-                    title="View Code"
-                  >
-                    <Github className="h-4 w-4" />
-                  </a>
-                  <a
-                    href={project.live}
-                    className="text-muted-foreground hover:text-neon-blue transition-colors duration-300"
-                    title="Live Demo"
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-neon-green transition-colors duration-300"
+                      title="View Code"
+                      aria-label={`View code for ${project.title} on GitHub`}
+                    >
+                      <Github className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  )}
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-neon-blue transition-colors duration-300"
+                      title="Live Demo"
+                      aria-label={`View live demo of ${project.title}`}
+                    >
+                      <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                    </a>
+                  )}
                 </div>
               </div>
-              <div className="mb-4">
-                <p className="text-sm text-muted-foreground leading-relaxed overflow-hidden"
-                   style={{
-                     display: '-webkit-box',
-                     WebkitLineClamp: 3,
-                     WebkitBoxOrient: 'vertical',
-                     lineHeight: '1.4',
-                     maxHeight: '4.2em'
-                   }}>
+              <div className="mb-4 flex-grow">
+                <p 
+                  className="text-sm text-muted-foreground leading-relaxed"
+                  style={{
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
+                  }}
+                  tabIndex={0}
+                >
                   {project.description}
                 </p>
               </div>
-              <div className="flex flex-wrap gap-1 mt-auto">
-                {project.tech.slice(0, 3).map((tech) => (
+              <div 
+                className="flex flex-wrap gap-2"
+                role="group"
+                aria-label={`Technologies used in ${project.title}`}
+              >
+                {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2 py-1 bg-primary/10 text-primary text-xs border border-primary/20 rounded hover:bg-primary/20 transition-colors duration-300 truncate max-w-20"
+                    className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
+                    role="term"
                   >
                     {tech}
                   </span>
                 ))}
-                {project.tech.length > 3 && (
-                  <span className="px-2 py-1 text-xs text-muted-foreground flex-shrink-0">
-                    +{project.tech.length - 3}
-                  </span>
-                )}
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-transparent to-background/50 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none"></div>
     </section>
   );
 };
