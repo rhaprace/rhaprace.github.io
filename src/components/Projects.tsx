@@ -42,7 +42,7 @@ const Projects = () => {
       title: "Atletech - AI Fitness App",
       description: "AI-powered fitness application that helps users track their weight based on personal goals. Features customizable meal plans and workout routines tailored to individual fitness objectives and preferences.",
       tech: ["React", "AI/ML", "JavaScript", "CSS"],
-      github: "#",
+      github: "https://github.com/rhaprace/Atletech",
       live: "http://atletechteam.netlify.app/",
       category: "Web App",
       icon: Dumbbell,
@@ -105,7 +105,7 @@ const Projects = () => {
   return (
     <section 
       id="projects" 
-      className="py-20 relative overflow-hidden"
+      className="py-12 sm:py-20 relative overflow-hidden"
       aria-label="Projects Section"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background/90"></div>
@@ -134,19 +134,23 @@ const Projects = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-orbitron font-bold text-3xl md:text-5xl mb-6" tabIndex={0}>
+        <div className="text-center mb-8 sm:mb-16">
+          <h2 className="font-orbitron font-bold text-2xl sm:text-3xl md:text-5xl mb-4 sm:mb-6" tabIndex={0}>
             PROJECTS
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8" tabIndex={0}>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-4" tabIndex={0}>
             Here are some of my featured projects that showcase my skills and experience
           </p>
-          <div className="flex flex-wrap justify-center gap-3 mb-8" role="group" aria-label="Project category filters">
+          <div 
+            className="flex overflow-x-auto hide-scrollbar py-2 mb-6 sm:mb-8 justify-start sm:justify-center gap-2 sm:gap-3 sm:flex-wrap mx-auto"
+            role="group"
+            aria-label="Project category filters"
+          >
             {categories.map(category => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-lg border transition-all duration-300 text-sm 
+                className={`flex-none px-4 py-2 rounded-lg border transition-all duration-300 text-sm whitespace-nowrap
                   ${selectedCategory === category 
                     ? 'border-neon-blue text-neon-blue bg-neon-blue/10' 
                     : 'border-border/50 text-muted-foreground hover:border-neon-blue/50 hover:text-neon-blue'}`}
@@ -160,43 +164,43 @@ const Projects = () => {
         </div>
 
         <div 
-          className="grid md:grid-cols-2 gap-8 auto-rows-fr"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
           role="list"
           aria-label="Projects grid"
         >
           {filteredProjects.map((project, index) => (
             <div
               key={project.title}
-              className="bg-card/30 backdrop-blur-sm border border-border/30 rounded-lg p-6 group hover:border-primary/50 transition-all duration-300 hover:bg-card/50 flex flex-col"
+              className="bg-card/30 backdrop-blur-sm border border-border/30 rounded-lg p-4 sm:p-6 group hover:border-primary/50 transition-all duration-300 hover:bg-card/50 flex flex-col"
               style={{
                 opacity: 0,
                 animation: `fade-in 0.5s ease-out forwards ${index * 0.1}s`
               }}
               role="listitem"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center space-x-3 min-w-0 flex-1">
-                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300" aria-hidden="true">
-                    <project.icon className="h-6 w-6 text-primary group-hover:animate-pulse" />
+              <div className="flex items-start justify-between mb-3 sm:mb-4">
+                <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+                  <div className="p-1.5 sm:p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300" aria-hidden="true">
+                    <project.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary group-hover:animate-pulse" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-orbitron font-semibold text-base text-primary truncate" tabIndex={0}>
+                    <h3 className="font-orbitron font-semibold text-sm sm:text-base text-primary truncate" tabIndex={0}>
                       {project.title}
                     </h3>
                     <span className="text-xs text-muted-foreground" role="doc-subtitle">{project.category}</span>
                   </div>
                 </div>
-                <div className="flex space-x-2 flex-shrink-0 ml-2">
+                <div className="flex space-x-3 flex-shrink-0 ml-2">
                   {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-neon-green transition-colors duration-300"
+                      className="text-muted-foreground hover:text-neon-green transition-colors duration-300 p-1 sm:p-0"
                       title="View Code"
                       aria-label={`View code for ${project.title} on GitHub`}
                     >
-                      <Github className="h-4 w-4" aria-hidden="true" />
+                      <Github className="h-5 w-5 sm:h-4 sm:w-4" aria-hidden="true" />
                     </a>
                   )}
                   {project.live && (
@@ -204,18 +208,18 @@ const Projects = () => {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-neon-blue transition-colors duration-300"
+                      className="text-muted-foreground hover:text-neon-blue transition-colors duration-300 p-1 sm:p-0"
                       title="Live Demo"
                       aria-label={`View live demo of ${project.title}`}
                     >
-                      <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                      <ExternalLink className="h-5 w-5 sm:h-4 sm:w-4" aria-hidden="true" />
                     </a>
                   )}
                 </div>
               </div>
-              <div className="mb-4 flex-grow">
+              <div className="mb-3 sm:mb-4 flex-grow">
                 <p 
-                  className="text-sm text-muted-foreground leading-relaxed"
+                  className="text-xs sm:text-sm text-muted-foreground leading-relaxed"
                   style={{
                     display: '-webkit-box',
                     WebkitLineClamp: 3,
@@ -228,14 +232,14 @@ const Projects = () => {
                 </p>
               </div>
               <div 
-                className="flex flex-wrap gap-2"
+                className="flex flex-wrap gap-1.5 sm:gap-2"
                 role="group"
                 aria-label={`Technologies used in ${project.title}`}
               >
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-md border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
+                    className="px-2 py-0.5 sm:py-1 bg-primary/10 text-primary text-[10px] sm:text-xs rounded-md border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
                     role="term"
                   >
                     {tech}
