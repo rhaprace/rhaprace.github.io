@@ -1,4 +1,4 @@
-import { ExternalLink, Github, ShoppingCart, Calendar, Dumbbell } from 'lucide-react';
+import { ExternalLink, Github, Dumbbell, FileText } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';
 
 interface Project {
@@ -18,27 +18,6 @@ const Projects = () => {
 
   const projects = useMemo<Project[]>(() => [
     {
-      title: "Full-Stack Event Management Platform",
-      description: "A comprehensive web application built with React.js and Node.js that enables educational institutions to efficiently manage events, registrations, and user roles. Features real-time notifications, secure authentication, file uploads, analytics dashboards, and role-based access control for admins, organizers, and students.",
-      tech: ["React.js", "Node.js", "MongoDB", "Socket.io"],
-      github: "#",
-      live: "#",
-      category: "Full-Stack",
-      icon: Calendar,
-      featured: true
-    },
-    {
-      title: "E-Commerce Platform",
-      description: "Full-stack e-commerce solution with React, Next.js, and Stripe integration. Features include product management, cart functionality, and secure payments.",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80",
-      tech: ["Next.js", "React", "TypeScript", "Stripe"],
-      github: "#",
-      live: "#",
-      category: "Full-Stack",
-      icon: ShoppingCart,
-      featured: true
-    },
-    {
       title: "Atletech - AI Fitness App",
       description: "AI-powered fitness application that helps users track their weight based on personal goals. Features customizable meal plans and workout routines tailored to individual fitness objectives and preferences.",
       tech: ["React", "AI/ML", "JavaScript", "CSS"],
@@ -46,7 +25,19 @@ const Projects = () => {
       live: "http://atletechteam.netlify.app/",
       category: "Web App",
       icon: Dumbbell,
-      featured: true
+      featured: true,
+      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      title: "JavaScript Basics Documentation",
+      description: "A comprehensive documentation website designed to help beginners learn JavaScript fundamentals. Features interactive examples, clear explanations, and structured learning paths covering everything from basic syntax to advanced concepts. Built with modern web technologies to provide an optimal learning experience for new developers.",
+      tech: ["JavaScript", "HTML", "CSS", "Documentation"],
+      github: "#",
+      live: "https://js-docs-tau.vercel.app/",
+      category: "Documentation",
+      icon: FileText,
+      featured: true,
+      image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&w=800&q=80"
     },
   ], []);
 
@@ -164,43 +155,45 @@ const Projects = () => {
         </div>
 
         <div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8"
           role="list"
           aria-label="Projects grid"
         >
           {filteredProjects.map((project, index) => (
             <div
               key={project.title}
-              className="bg-card/30 backdrop-blur-sm border border-border/30 rounded-lg p-4 sm:p-6 group hover:border-primary/50 transition-all duration-300 hover:bg-card/50 flex flex-col"
+              className="bg-card/30 backdrop-blur-sm border border-border/30 rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300 hover:bg-card/50 hover:shadow-xl hover:shadow-neon-blue/10"
               style={{
                 opacity: 0,
                 animation: `fade-in 0.5s ease-out forwards ${index * 0.1}s`
               }}
               role="listitem"
             >
-              <div className="flex items-start justify-between mb-3 sm:mb-4">
-                <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
-                  <div className="p-1.5 sm:p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300" aria-hidden="true">
-                    <project.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary group-hover:animate-pulse" />
+              <div className="relative h-48 sm:h-56 overflow-hidden">
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={`Screenshot of ${project.title}`}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-neon-blue/20 to-neon-purple/20 flex items-center justify-center">
+                    <project.icon className="h-16 w-16 text-neon-blue/40" />
                   </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-orbitron font-semibold text-sm sm:text-base text-primary truncate" tabIndex={0}>
-                      {project.title}
-                    </h3>
-                    <span className="text-xs text-muted-foreground" role="doc-subtitle">{project.category}</span>
-                  </div>
-                </div>
-                <div className="flex space-x-3 flex-shrink-0 ml-2">
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-neon-green transition-colors duration-300 p-1 sm:p-0"
+                      className="p-2 bg-background/90 backdrop-blur-sm rounded-lg text-muted-foreground hover:text-neon-green border border-border/50 hover:border-neon-green/50 transition-all duration-300"
                       title="View Code"
                       aria-label={`View code for ${project.title} on GitHub`}
                     >
-                      <Github className="h-5 w-5 sm:h-4 sm:w-4" aria-hidden="true" />
+                      <Github className="h-4 w-4" aria-hidden="true" />
                     </a>
                   )}
                   {project.live && (
@@ -208,43 +201,52 @@ const Projects = () => {
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-neon-blue transition-colors duration-300 p-1 sm:p-0"
+                      className="p-2 bg-background/90 backdrop-blur-sm rounded-lg text-muted-foreground hover:text-neon-blue border border-border/50 hover:border-neon-blue/50 transition-all duration-300"
                       title="Live Demo"
                       aria-label={`View live demo of ${project.title}`}
                     >
-                      <ExternalLink className="h-5 w-5 sm:h-4 sm:w-4" aria-hidden="true" />
+                      <ExternalLink className="h-4 w-4" aria-hidden="true" />
                     </a>
                   )}
                 </div>
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 bg-primary/20 text-primary text-xs rounded-full border border-primary/30 backdrop-blur-sm">
+                    {project.category}
+                  </span>
+                </div>
               </div>
-              <div className="mb-3 sm:mb-4 flex-grow">
+              <div className="p-6">
+                <div className="flex items-center space-x-3 mb-3">
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors duration-300" aria-hidden="true">
+                    <project.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="font-orbitron font-semibold text-lg text-primary" tabIndex={0}>
+                    {project.title}
+                  </h3>
+                </div>
+                
                 <p 
-                  className="text-xs sm:text-sm text-muted-foreground leading-relaxed"
-                  style={{
-                    display: '-webkit-box',
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden'
-                  }}
+                  className="text-sm text-muted-foreground leading-relaxed mb-4"
                   tabIndex={0}
                 >
                   {project.description}
                 </p>
-              </div>
-              <div 
-                className="flex flex-wrap gap-1.5 sm:gap-2"
-                role="group"
-                aria-label={`Technologies used in ${project.title}`}
-              >
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-0.5 sm:py-1 bg-primary/10 text-primary text-[10px] sm:text-xs rounded-md border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
-                    role="term"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                
+                <div 
+                  className="flex flex-wrap gap-2"
+                  role="group"
+                  aria-label={`Technologies used in ${project.title}`}
+                >
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-md border border-primary/20 hover:bg-primary/20 transition-colors duration-300"
+                      role="term"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}

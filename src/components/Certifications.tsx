@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import backendCert from '../assets/BackEnd and API.png';
 import responsiveWebCert from '../assets/Responsive Web Design.png';
 import javascriptCert from '../assets/JavaScript Algorithm and Data Structures.png';
+import frontendCert from '../assets/Front End Development Libraries.png';
 interface Certificate {
   title: string;
   issuer: string;
@@ -33,6 +34,13 @@ const Certifications = () => {
       date: "2023",
       image: javascriptCert,
       url: "https://www.freecodecamp.org/certification/rhaprace_1211/javascript-algorithms-and-data-structures-v8"
+    },
+    {
+      title: "Front End Development Libraries",
+      issuer: "freeCodeCamp",
+      date: "2023",
+      image: frontendCert,
+      url: "https://www.freecodecamp.org/certification/rhaprace_1211/front-end-development-libraries"
     },
   ];
   const containerRef = useMemo(() => ({ current: null as HTMLDivElement | null }), []);

@@ -2,16 +2,6 @@ import { Linkedin, Github, ArrowDown } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';
 
 const Hero = () => {
-  const skills = [
-    'REACT',
-    'NEXT.JS',
-    'TYPESCRIPT',
-    'JAVASCRIPT',
-    'TAILWIND CSS',
-    'HTML/CSS',
-    'NODE.JS',
-    'FRONTEND'
-  ];
   const techIcons = useMemo(() => [
     '</>',
     '{}',
@@ -30,7 +20,7 @@ const Hero = () => {
     'CSS'
   ], []);
 
-  const [currentSkillIndex, setCurrentSkillIndex] = useState(0);  const [floatingIcons, setFloatingIcons] = useState<{ 
+  const [floatingIcons, setFloatingIcons] = useState<{ 
     icon: string; 
     style: {
       left: string;
@@ -40,14 +30,6 @@ const Hero = () => {
       opacity: number;
     };
   }[]>([]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSkillIndex((prevIndex) => (prevIndex + 1) % skills.length);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, [skills.length]);
 
   useEffect(() => {
     const icons = techIcons.map((icon: string) => ({
@@ -111,18 +93,12 @@ const Hero = () => {
                 Hello! I'm Rafael Race
               </p>
               <div className="h-20 md:h-24 lg:h-28 flex items-center justify-center">
-                <h1 className="font-orbitron font-bold text-4xl md:text-6xl lg:text-8xl">
-                  <span
-                    key={currentSkillIndex}
-                    className="block text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-blue animate-fade-in-up"
-                  >
-                    {skills[currentSkillIndex]}
+                <h1 className="font-orbitron font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-blue">
+                    SOFTWARE ENGINEER
                   </span>
                 </h1>
               </div>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Developer, I make Awesome and Dynamic Web Applications.
-              </p>
             </div>            <div className="flex justify-center">
               <button
                 onClick={scrollToProjects}
