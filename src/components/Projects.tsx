@@ -1,6 +1,7 @@
 import { ExternalLink, Github, Dumbbell, FileText } from 'lucide-react';
 import { useState, useEffect, useMemo } from 'react';
-
+import atletech from '../assets/atletech-bg.png'
+import jsDocs from '../assets/js-docs.png'
 interface Project {
   title: string;
   description: string;
@@ -26,7 +27,7 @@ const Projects = () => {
       category: "Web App",
       icon: Dumbbell,
       featured: true,
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
+      image: atletech
     },
     {
       title: "JavaScript Basics Documentation",
@@ -37,7 +38,7 @@ const Projects = () => {
       category: "Documentation",
       icon: FileText,
       featured: true,
-      image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&w=800&q=80"
+      image: jsDocs
     },
   ], []);
 
@@ -104,17 +105,16 @@ const Projects = () => {
         {floatingShapes.map((shape, index) => (
           <div
             key={index}
-            className="absolute border border-neon-blue/20 rounded-lg backdrop-blur-sm animate-float-slow"
+            className="absolute border border-white/20 rounded-lg backdrop-blur-sm animate-float-slow"
             style={{
               ...shape.style,
               transform: 'translate(-50%, -50%)',
             }}
-          >
-            <div className="h-6 bg-card/30 border-b border-neon-blue/20 flex items-center px-3">
+          >              <div className="h-6 bg-card/30 border-b border-white/20 flex items-center px-3">
               <div className="flex space-x-1.5">
-                <div className="w-2 h-2 rounded-full bg-neon-purple/20" />
-                <div className="w-2 h-2 rounded-full bg-neon-blue/20" />
-                <div className="w-2 h-2 rounded-full bg-neon-green/20" />
+                <div className="w-2 h-2 rounded-full bg-white/20" />
+                <div className="w-2 h-2 rounded-full bg-white/20" />
+                <div className="w-2 h-2 rounded-full bg-white/20" />
               </div>
             </div>
             <div className="p-3 font-mono text-sm">
@@ -126,10 +126,10 @@ const Projects = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-16">
-          <h2 className="font-orbitron font-bold text-2xl sm:text-3xl md:text-5xl mb-4 sm:mb-6" tabIndex={0}>
+          <h2 className="font-orbitron font-bold text-2xl sm:text-3xl md:text-5xl mb-4 sm:mb-6 text-white" tabIndex={0}>
             PROJECTS
           </h2>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 sm:mb-8 px-4" tabIndex={0}>
+          <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto mb-6 sm:mb-8 px-4" tabIndex={0}>
             Here are some of my featured projects that showcase my skills and experience
           </p>
           <div 
@@ -143,8 +143,8 @@ const Projects = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`flex-none px-4 py-2 rounded-lg border transition-all duration-300 text-sm whitespace-nowrap
                   ${selectedCategory === category 
-                    ? 'border-neon-blue text-neon-blue bg-neon-blue/10' 
-                    : 'border-border/50 text-muted-foreground hover:border-neon-blue/50 hover:text-neon-blue'}`}
+                    ? 'border-white text-white bg-white/10' 
+                    : 'border-border/50 text-gray-300 hover:border-white/50 hover:text-white'}`}
                 aria-pressed={selectedCategory === category}
                 aria-label={`Filter by ${category} projects`}
               >
@@ -162,7 +162,7 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <div
               key={project.title}
-              className="bg-card/30 backdrop-blur-sm border border-border/30 rounded-xl overflow-hidden group hover:border-primary/50 transition-all duration-300 hover:bg-card/50 hover:shadow-xl hover:shadow-neon-blue/10"
+              className="bg-card/30 backdrop-blur-sm border border-border/30 rounded-xl overflow-hidden group hover:border-white/50 transition-all duration-300 hover:bg-card/50 hover:shadow-xl hover:shadow-white/10"
               style={{
                 opacity: 0,
                 animation: `fade-in 0.5s ease-out forwards ${index * 0.1}s`
@@ -178,8 +178,8 @@ const Projects = () => {
                     loading="lazy"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-neon-blue/20 to-neon-purple/20 flex items-center justify-center">
-                    <project.icon className="h-16 w-16 text-neon-blue/40" />
+                  <div className="w-full h-full bg-gradient-to-br from-white/10 to-white/20 flex items-center justify-center">
+                    <project.icon className="h-16 w-16 text-white/40" />
                   </div>
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -189,7 +189,7 @@ const Projects = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 bg-background/90 backdrop-blur-sm rounded-lg text-muted-foreground hover:text-neon-green border border-border/50 hover:border-neon-green/50 transition-all duration-300"
+                      className="p-2 bg-background/90 backdrop-blur-sm rounded-lg text-gray-300 hover:text-white border border-border/50 hover:border-white/50 transition-all duration-300"
                       title="View Code"
                       aria-label={`View code for ${project.title} on GitHub`}
                     >

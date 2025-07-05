@@ -25,6 +25,7 @@ const Footer = () => {
   }[]>([]);
 
   useEffect(() => {
+    let mounted = true;
     const icons = floatingElements.map(({ icon, size, color }) => ({
       Icon: icon,
       style: {
@@ -37,7 +38,14 @@ const Footer = () => {
         color,
       },
     }));
-    setFloatingIcons(icons);
+    
+    if (mounted) {
+      setFloatingIcons(icons);
+    }
+
+    return () => {
+      mounted = false;
+    };
   }, [floatingElements]);
 
   return (

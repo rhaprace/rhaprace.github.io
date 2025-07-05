@@ -31,6 +31,7 @@ const About = () => {
   const [floatingShapes, setFloatingShapes] = useState<FloatingShape[]>([]);
 
   useEffect(() => {
+    let mounted = true;
     const shapes = floatingElements.map(({ type, rotate }) => ({
       type,
       rotate: rotate + Math.random() * 30,
@@ -42,7 +43,14 @@ const About = () => {
         opacity: 0.1,
       },
     }));
-    setFloatingShapes(shapes);
+    
+    if (mounted) {
+      setFloatingShapes(shapes);
+    }
+
+    return () => {
+      mounted = false;
+    };
   }, [floatingElements]);
 
   const getShapeContent = (type: string) => {

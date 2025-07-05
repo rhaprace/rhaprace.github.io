@@ -99,7 +99,7 @@ const Certifications = () => {
         {floatingShapes.map((shape, index) => (
           <div
             key={index}
-            className="absolute animate-float-slow"
+            className="absolute animate-float"
             style={{
               ...shape.style,
               transform: 'translate(-50%, -50%)',
@@ -110,12 +110,13 @@ const Certifications = () => {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-blue">
-            My Certifications
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="font-orbitron font-bold text-3xl md:text-5xl mb-4">
+            <span className="text-white">CERTIFICATIONS</span>
           </h2>
-          <p className="text-lg text-muted-foreground mb-12">
+          <div className="h-1 w-32 bg-gradient-to-r from-white/0 via-white/50 to-white/0 mx-auto mb-6"></div>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
             Professional certifications and achievements
           </p>
         </div>
@@ -123,45 +124,46 @@ const Certifications = () => {
         <div className="relative">
           <button
             onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full border border-border/50 hover:border-neon-blue/50 transition-all duration-300"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-gray-300 hover:text-white p-2 rounded-full backdrop-blur-sm transition-all border border-white/10 hover:border-white/30"
           >
-            <ChevronLeft className="w-6 h-6 text-muted-foreground hover:text-neon-blue" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
+
           <button
             onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full border border-border/50 hover:border-neon-blue/50 transition-all duration-300"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-gray-300 hover:text-white p-2 rounded-full backdrop-blur-sm transition-all border border-white/10 hover:border-white/30"
           >
-            <ChevronRight className="w-6 h-6 text-muted-foreground hover:text-neon-blue" />
+            <ChevronRight className="w-6 h-6" />
           </button>
+
           <div
             ref={containerRef}
-            className="overflow-x-auto hide-scrollbar relative flex gap-8 px-4 pb-4 snap-x snap-mandatory scroll-smooth"
-            onScroll={() => {}}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth py-8 px-4 no-scrollbar"
           >
-            {certificates.map(cert => (
+            {certificates.map((cert, index) => (
               <div
-                key={cert.title}
-                className="snap-center flex-shrink-0 w-[400px]"
+                key={index}
+                className="flex-none w-[300px] md:w-[400px] snap-center group"
               >
                 <a
                   href={cert.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group block relative overflow-hidden rounded-lg border border-border/50 hover:border-neon-blue/50 transition-all duration-300 hover:shadow-xl hover:shadow-neon-blue/10"
+                  className="block relative bg-card/50 backdrop-blur-sm border border-white/20 
+                    hover:border-white/40 rounded-lg p-4 transition-all duration-300
+                    hover:shadow-lg hover:shadow-white/10 group-hover:scale-[1.02]"
                 >
-                  <img
-                    src={cert.image}
-                    alt={`${cert.title} Certification`}
-                    className="w-full h-auto transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-opacity duration-300 p-6">
-                    <span className="text-neon-blue font-medium text-lg mb-2">{cert.title}</span>
-                    <span className="text-muted-foreground text-sm mb-4">
-                      {cert.issuer} • {cert.date}
-                    </span>
-                    <span className="px-6 py-3 border border-neon-blue/50 rounded-lg backdrop-blur-sm text-neon-blue">
-                      View Certificate
-                    </span>
+                  <div className="aspect-video w-full overflow-hidden rounded-md mb-4">
+                    <img
+                      src={cert.image}
+                      alt={cert.title}
+                      className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">{cert.title}</h3>
+                  <div className="flex justify-between items-center text-gray-300">
+                    <span>{cert.issuer}</span>
+                    <span>{cert.date}</span>
                   </div>
                 </a>
               </div>
@@ -169,9 +171,6 @@ const Certifications = () => {
           </div>
         </div>
       </div>
-
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-transparent to-background/50 pointer-events-none"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent pointer-events-none"></div>
     </section>
   );
 };

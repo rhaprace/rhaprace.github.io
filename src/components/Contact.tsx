@@ -29,6 +29,7 @@ const Contact = () => {
   }[]>([]);
 
   useEffect(() => {
+    let mounted = true;
     const icons = floatingElements.map(({ icon, size, color }) => ({
       Icon: icon,
       style: {
@@ -41,7 +42,14 @@ const Contact = () => {
         color,
       },
     }));
-    setFloatingIcons(icons);
+
+    if (mounted) {
+      setFloatingIcons(icons);
+    }
+
+    return () => {
+      mounted = false;
+    };
   }, [floatingElements]);
 
   return (
