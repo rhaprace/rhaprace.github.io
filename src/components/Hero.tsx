@@ -42,7 +42,7 @@ const Hero = () => {
   const [isTyping, setIsTyping] = useState(true);
   const heroRef = useRef<HTMLElement>(null);
 
-  const fullText = 'SOFTWARE ENGINEER';
+  const fullText = 'Web Developer';
   useEffect(() => {
     let index = 0;
     let mounted = true;
