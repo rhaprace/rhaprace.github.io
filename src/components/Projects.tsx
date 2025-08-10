@@ -133,7 +133,7 @@ const Projects = () => {
             Here are some of my featured projects that showcase my skills and experience
           </p>
           <div 
-            className="flex overflow-x-auto hide-scrollbar py-2 mb-6 sm:mb-8 justify-start sm:justify-center gap-2 sm:gap-3 sm:flex-wrap mx-auto"
+            className="flex overflow-x-auto overflow-y-hidden hide-scrollbar py-2 mb-6 sm:mb-8 justify-start sm:justify-center gap-2 sm:gap-3 sm:flex-wrap mx-auto"
             role="group"
             aria-label="Project category filters"
           >

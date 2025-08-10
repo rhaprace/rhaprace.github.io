@@ -117,7 +117,7 @@ const About = () => {
               <a
                 href="/CV.pdf"
                 download="Rafael_Race_CV.pdf"
-                className="inline-flex items-center space-x-2 bg-neon-blue text-white px-6 py-3 font-semibold hover:bg-neon-blue/80 transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center space-x-2 bg-gradient-to-t text-white px-6 py-3 font-semibold transition-all duration-300 transform"
               >
                 <Download className="h-5 w-5" />
                 <span>DOWNLOAD MY CV</span>

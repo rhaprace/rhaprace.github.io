@@ -240,7 +240,7 @@ const Hero = () => {
               href="https://www.linkedin.com/in/rafael-race-54033719b"
               target="_blank"
               rel="noopener noreferrer"
-              className="group w-14 h-14 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 flex items-center justify-center rounded-xl hover:border-blue-400/50 hover:text-blue-400 hover:bg-slate-700/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-400/20"
+              className="group w-14 h-14 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 flex items-center justify-center rounded-xl hover:border-neon-blue/50 hover:text-neon-blue hover:bg-slate-700/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-white/10"
             >
               <Linkedin className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
             </a>
@@ -248,7 +248,7 @@ const Hero = () => {
               href="https://github.com/rhaprace"
               target="_blank"
               rel="noopener noreferrer"
-              className="group w-14 h-14 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 flex items-center justify-center rounded-xl hover:border-purple-400/50 hover:text-purple-400 hover:bg-slate-700/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-400/20"
+              className="group w-14 h-14 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 flex items-center justify-center rounded-xl hover:border-neon-blue/50 hover:text-neon-blue hover:bg-slate-700/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-white/10"
             >
               <Github className="h-6 w-6 group-hover:scale-110 transition-transform duration-300" />
             </a>

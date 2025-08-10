@@ -138,7 +138,7 @@ const Certifications = () => {
 
           <div
             ref={containerRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth py-8 px-4 no-scrollbar"
+            className="flex gap-6 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth py-8 px-4 hide-scrollbar"
           >
             {certificates.map((cert, index) => (
               <div
