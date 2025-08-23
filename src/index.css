@@ -119,12 +119,31 @@
   }
 }
 
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) translateY(-10px) rotate(90deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-5px) rotate(180deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) translateY(-15px) rotate(270deg);
+  }
+}
+
 .animate-float {
-  animation: float 4s ease-in-out infinite;
+  animation: float var(--animation-duration, 10s) ease-in-out infinite;
 }
 
 .animate-float-slow {
-  animation: float-slow 8s linear infinite;
+  animation: float-slow var(--animation-duration, 15s) ease-in-out infinite;
+}
+
+.animate-float-gentle {
+  animation: float-gentle var(--animation-duration, 20s) ease-in-out infinite;
 }
 
 html {
