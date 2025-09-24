@@ -1,4 +1,4 @@
-import React from 'react';
+
 import backendCert from '../assets/BackEnd and API.png';
 import responsiveWebCert from '../assets/Responsive Web Design.png';
 import javascriptCert from '../assets/JavaScript Algorithm and Data Structures.png';
