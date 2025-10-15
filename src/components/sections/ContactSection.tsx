@@ -8,7 +8,6 @@ import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 export const ContactSection = () => {
   return (
     <div className="grid md:grid-cols-2 gap-6">
-      {/* Contact Form */}
       <Card className="shadow-[var(--shadow-card)] border-border">
         <CardHeader>
           <CardTitle>Send a Message</CardTitle>
@@ -40,8 +39,6 @@ export const ContactSection = () => {
           </form>
         </CardContent>
       </Card>
-
-      {/* Contact Info */}
       <div className="space-y-6">
         <Card className="shadow-[var(--shadow-card)] border-border">
           <CardHeader>
@@ -52,30 +49,19 @@ export const ContactSection = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
-              <Mail className="w-5 h-5" />
-              <span>john.doe@example.com</span>
-            </div>
-            <div className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
               <Github className="w-5 h-5" />
-              <a href="https://github.com" className="hover:underline">
-                github.com/johndoe
+              <a href="https://github.com/rhaprace" className="hover:underline">
+                github.com/rhaprace
               </a>
             </div>
             <div className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
               <Linkedin className="w-5 h-5" />
-              <a href="https://linkedin.com" className="hover:underline">
-                linkedin.com/in/johndoe
-              </a>
-            </div>
-            <div className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors">
-              <Twitter className="w-5 h-5" />
-              <a href="https://twitter.com" className="hover:underline">
-                twitter.com/johndoe
+              <a href="www.linkedin.com/in/rhaprace" className="hover:underline">
+                linkedin.com/in/rhaprace
               </a>
             </div>
           </CardContent>
         </Card>
-
         <Card className="shadow-[var(--shadow-card)] border-border bg-primary/5">
           <CardHeader>
             <CardTitle className="text-lg">Availability</CardTitle>
