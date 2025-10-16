@@ -20,7 +20,7 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="min-w-[120px] bg-popover text-popover-foreground">
+      <DropdownMenuContent align="center" className="min-w-[120px] bg-popover text-popover-foreground">
         <DropdownMenuItem
           onClick={() => setTheme("light")}
           className={`${theme === "light" ? "bg-accent text-accent-foreground" : ""} [&>span]:text-current [&>svg]:text-current`}

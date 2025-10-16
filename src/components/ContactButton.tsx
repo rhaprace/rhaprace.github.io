@@ -60,7 +60,7 @@ export const ContactButton = ({
           Contact Me
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuContent align="center" className="w-48">
         <DropdownMenuItem onClick={handleGmail} className="cursor-pointer">
           <ExternalLink className="mr-2 h-4 w-4" />
           <span>Open in Gmail</span>

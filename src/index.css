@@ -107,7 +107,18 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    overflow-y: scroll;
+  }
+
   body {
     @apply bg-background text-foreground;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Ensure container doesn't shift */
+  .container {
+    width: 100%;
   }
 }
