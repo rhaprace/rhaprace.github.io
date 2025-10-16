@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { BadgeList } from "@/components/BadgeList";
 
 export const AboutSection = () => {
   const skills = [
@@ -27,17 +27,7 @@ export const AboutSection = () => {
           <CardTitle>Skills & Technologies</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <Badge 
-                key={skill} 
-                variant="secondary" 
-                className="hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
-              >
-                {skill}
-              </Badge>
-            ))}
-          </div>
+          <BadgeList items={skills} />
         </CardContent>
       </Card>
       <div className="grid md:grid-cols-2 gap-6">

@@ -1,12 +1,39 @@
-# Welcome to your Lovable project
+# Rafael Race - Portfolio
 
-## Project info
+A modern, responsive portfolio website showcasing my work as a Junior Full Stack Developer.
 
-**URL**: https://lovable.dev/projects/182d42c6-feda-4334-a336-1159edb91544
+## 🚀 Featured Projects
 
-## How can I edit this code?
+- **QuakeSafe** - Earthquake safety application with interactive maps and real-time alerts
+- **Fire-Aware** - Fire safety and awareness application with emergency protocols
 
-There are several ways of editing your application.
+## 🛠️ Built With
+
+- **React 18** - Frontend framework
+- **TypeScript** - Type safety
+- **Vite** - Build tool and dev server
+- **Tailwind CSS** - Styling framework
+- **shadcn/ui** - UI component library
+- **next-themes** - Theme switching
+- **TanStack Query** - Data fetching
+
+## 🎨 Features
+
+- **Responsive Design** - Works on all devices
+- **Dark/Light Mode** - Automatic system theme detection
+- **Modern UI** - Clean, professional design
+- **Fast Performance** - Optimized for production
+- **Lazy Loading** - Images load only when needed
+- **Image Optimization** - Preloaded critical images
+
+## 📱 Contact
+
+- **Email**: rhaprace@gmail.com
+- **Location**: Olongapo City, Philippines
+
+## 🔧 Development
+
+To run this project locally:
 
 **Use Lovable**
 

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Briefcase, GraduationCap, ExternalLink, Smartphone } from "lucide-react";
+import { BadgeList } from "@/components/BadgeList";
 
 const experiences = [
   {
@@ -71,13 +71,7 @@ export const ExperienceSection = () => {
             {exp.technologies && (
               <div>
                 <h4 className="text-sm font-medium mb-2">Technologies:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {exp.technologies.map((tech, idx) => (
-                    <Badge key={idx} variant="secondary" className="text-xs">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
+                <BadgeList items={exp.technologies} />
               </div>
             )}
 

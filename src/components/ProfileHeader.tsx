@@ -1,6 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { Mail, MapPin } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { ContactButton } from "@/components/ContactButton";
+import { CONTACT_INFO } from "@/config/contact";
 import coverImage from "@/assets/cover.png";
 import profileImage from "@/assets/profile.jpg";
 
@@ -29,20 +31,27 @@ export const ProfileHeader = () => {
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-3 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
                 <MapPin className="w-4 h-4 flex-shrink-0" />
-                <span>Olongapo City, PH</span>
+                <span>{CONTACT_INFO.location}</span>
               </div>
               <div className="flex items-center gap-1">
                 <Mail className="w-4 h-4 flex-shrink-0" />
-                <a href="mailto:rhaprace@gmail.com" className="hover:text-primary transition-colors">
-                  rhaprace@gmail.com
-                </a>
+                <button
+                  onClick={() => window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT_INFO.email}`, '_blank')}
+                  className="hover:text-primary transition-colors text-left"
+                >
+                  {CONTACT_INFO.email}
+                </button>
               </div>
             </div>
           </div>
-          <Button className="md:mb-2 bg-primary hover:bg-primary/90 transition-all">
-            <Mail className="w-4 h-4 mr-2" />
-            Contact Me
-          </Button>
+          <div className="flex gap-3 items-center justify-start md:justify-end">
+            <ThemeToggle />
+            <ContactButton
+              email={CONTACT_INFO.email}
+              subject={CONTACT_INFO.subject}
+              className="bg-primary hover:bg-primary/90 transition-all"
+            />
+          </div>
         </div>
       </div>
     </div>
