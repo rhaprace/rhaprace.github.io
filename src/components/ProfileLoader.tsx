@@ -13,28 +13,24 @@ export const ProfileLoader = () => {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center">
       <div className="relative w-32 h-32">
-        {/* Outer rotating square */}
         <div
           className={`absolute inset-0 border-2 border-foreground transition-transform duration-500 ${
             stage === 0 ? "rotate-0" : stage === 1 ? "rotate-45" : "rotate-90"
           }`}
         />
         
-        {/* Middle circle */}
         <div
           className={`absolute inset-4 rounded-full border-2 border-foreground transition-all duration-500 ${
             stage === 1 ? "scale-110" : "scale-100"
           }`}
         />
         
-        {/* Inner pulsing dot */}
         <div
           className={`absolute inset-12 bg-foreground rounded-full transition-all duration-500 ${
             stage === 2 ? "scale-150 opacity-0" : "scale-100 opacity-100"
           }`}
         />
         
-        {/* Corner dots */}
         {[0, 1, 2, 3].map((i) => (
           <div
             key={i}
@@ -48,19 +44,18 @@ export const ProfileLoader = () => {
         ))}
       </div>
       
-      {/* Loading text */}
       <div className="absolute mt-48 flex gap-1">
-        {["L", "o", "a", "d", "i", "n", "g"].map((letter, i) => (
+        {["Y", "o", "u", " ", "a", "r", "e", " ", "e", "n", "t", "e", "r", "i", "n", "g", " ", "t", "o", " ", "m", "y", " ", "D", "o", "m", "a", "i", "n"].map((letter, i) => (
           <span
             key={i}
             className="text-foreground font-medium animate-fade-in"
             style={{
-              animationDelay: `${i * 0.1}s`,
+              animationDelay: `${i * 0.05}s`,
               animationDuration: "1s",
               animationIterationCount: "infinite",
             }}
           >
-            {letter}
+            {letter === " " ? "\u00A0" : letter}
           </span>
         ))}
       </div>
