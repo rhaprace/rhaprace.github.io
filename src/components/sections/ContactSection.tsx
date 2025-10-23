@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Clock, ExternalLink } from "lucide-react";
 import { ContactLink } from "@/components/ContactLink";
 import { CONTACT_INFO } from "@/config/contact";
 
@@ -25,12 +25,12 @@ export const ContactSection = () => {
           />
           <ContactLink
             href={CONTACT_INFO.github}
-            icon={<Mail className="w-5 h-5" />}
+            icon={<ExternalLink className="w-5 h-5" />}
             label="github.com/rhaprace"
           />
           <ContactLink
             href={CONTACT_INFO.linkedin}
-            icon={<Mail className="w-5 h-5" />}
+            icon={<ExternalLink className="w-5 h-5" />}
             label="linkedin.com/in/rhaprace"
           />
           <div className="flex items-center gap-3 p-4 rounded-lg bg-card border border-border text-muted-foreground">

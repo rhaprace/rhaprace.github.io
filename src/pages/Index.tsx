@@ -4,6 +4,8 @@ import { ProfileHeader } from "@/components/ProfileHeader";
 import { ProfileTabs } from "@/components/ProfileTabs";
 import { ProfileLoader } from "@/components/ProfileLoader";
 import Particles from "@/components/ui/particles";
+import { LOADING_DURATION } from "@/constants/timing";
+import { PARTICLE_CONFIG, PARTICLE_COLORS } from "@/config/particles";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -12,7 +14,7 @@ const Index = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, LOADING_DURATION);
     return () => clearTimeout(timer);
   }, []);
 
@@ -21,21 +23,21 @@ const Index = () => {
   }
 
   const currentTheme = resolvedTheme || theme;
-  const particleColors = currentTheme === 'dark'
-    ? ['#ffffff', '#e0e0e0']
-    : ['#000000', '#333333'];
+  const particleColors =
+    currentTheme === "dark" ? PARTICLE_COLORS.DARK : PARTICLE_COLORS.LIGHT;
+
   return (
     <div className="min-h-screen bg-background relative">
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Particles
           particleColors={particleColors}
-          particleCount={200}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
+          particleCount={PARTICLE_CONFIG.COUNT}
+          particleSpread={PARTICLE_CONFIG.SPREAD}
+          speed={PARTICLE_CONFIG.SPEED}
+          particleBaseSize={PARTICLE_CONFIG.BASE_SIZE}
+          moveParticlesOnHover={PARTICLE_CONFIG.MOVE_ON_HOVER}
+          alphaParticles={PARTICLE_CONFIG.ALPHA_PARTICLES}
+          disableRotation={PARTICLE_CONFIG.DISABLE_ROTATION}
           className="w-full h-full"
         />
       </div>

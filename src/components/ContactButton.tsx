@@ -18,6 +18,15 @@ interface ContactButtonProps {
   size?: "default" | "sm" | "lg" | "icon";
 }
 
+type EmailClientType = "gmail" | "outlook" | "default" | "copy";
+
+const EMAIL_CLIENTS = [
+  { type: "gmail" as const, icon: ExternalLink, label: "Open in Gmail" },
+  { type: "outlook" as const, icon: ExternalLink, label: "Open in Outlook" },
+  { type: "default" as const, icon: Mail, label: "Default Email App" },
+  { type: "copy" as const, icon: Copy, label: "Copy Email" },
+];
+
 export const ContactButton = ({
   email,
   subject = "Portfolio Contact",
@@ -27,27 +36,26 @@ export const ContactButton = ({
 }: ContactButtonProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleGmail = () => {
-    emailService.openGmail({ email, subject });
-    setIsOpen(false);
-  };
-
-  const handleOutlook = () => {
-    emailService.openOutlook({ email, subject });
-    setIsOpen(false);
-  };
-
-  const handleDefaultClient = () => {
-    emailService.openDefault({ email, subject });
-    setIsOpen(false);
-  };
-
-  const handleCopyEmail = async () => {
-    const result = await emailService.copyToClipboard(email);
-    if (result.success) {
-      toast.success("Email copied to clipboard!");
-    } else {
-      toast.error("Failed to copy email");
+  const handleEmailClient = async (type: EmailClientType) => {
+    switch (type) {
+      case "gmail":
+        emailService.openGmail({ email, subject });
+        break;
+      case "outlook":
+        emailService.openOutlook({ email, subject });
+        break;
+      case "default":
+        emailService.openDefault({ email, subject });
+        break;
+      case "copy": {
+        const result = await emailService.copyToClipboard(email);
+        if (result.success) {
+          toast.success("Email copied to clipboard!");
+        } else {
+          toast.error("Failed to copy email");
+        }
+        break;
+      }
     }
     setIsOpen(false);
   };
@@ -61,22 +69,16 @@ export const ContactButton = ({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center" className="w-48">
-        <DropdownMenuItem onClick={handleGmail} className="cursor-pointer">
-          <ExternalLink className="mr-2 h-4 w-4" />
-          <span>Open in Gmail</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={handleOutlook} className="cursor-pointer">
-          <ExternalLink className="mr-2 h-4 w-4" />
-          <span>Open in Outlook</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={handleDefaultClient} className="cursor-pointer">
-          <Mail className="mr-2 h-4 w-4" />
-          <span>Default Email App</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={handleCopyEmail} className="cursor-pointer">
-          <Copy className="mr-2 h-4 w-4" />
-          <span>Copy Email</span>
-        </DropdownMenuItem>
+        {EMAIL_CLIENTS.map(({ type, icon: Icon, label }) => (
+          <DropdownMenuItem
+            key={type}
+            onClick={() => handleEmailClient(type)}
+            className="cursor-pointer"
+          >
+            <Icon className="mr-2 h-4 w-4" />
+            <span>{label}</span>
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );

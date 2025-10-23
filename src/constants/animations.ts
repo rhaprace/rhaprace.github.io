@@ -1,0 +1,7 @@
+export const ANIMATION_DELAYS = {
+  TIMELINE_ITEM: 150,
+  DESCRIPTION_ITEM: 50,
+  TECHNOLOGIES: 100,
+  LINKS: 150,
+} as const;
+

@@ -1,11 +1,12 @@
+import { memo } from "react";
 import { Badge } from "@/components/ui/badge";
 
 interface BadgeListProps {
-  items: string[];
+  items: readonly string[];
   className?: string;
 }
 
-export const BadgeList = ({ items, className = "" }: BadgeListProps) => {
+const BadgeListComponent = ({ items, className = "" }: BadgeListProps) => {
   return (
     <div className={`flex flex-wrap gap-2 ${className}`}>
       {items.map((item) => (
@@ -16,4 +17,6 @@ export const BadgeList = ({ items, className = "" }: BadgeListProps) => {
     </div>
   );
 };
+
+export const BadgeList = memo(BadgeListComponent);
 

@@ -1,11 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BadgeList } from "@/components/BadgeList";
+import { skills } from "@/data/skills";
+import { education } from "@/data/education";
+import { languages } from "@/data/languages";
 
 export const AboutSection = () => {
-  const skills = [
-    "React", "React Native", "Node.js", "JavaScript", "Supabase",
-    "PostgreSQL", "MongoDB", "Docker", "Git", "Tailwind CSS", "Expo"
-  ];
 
   return (
     <div className="grid gap-6">
@@ -38,9 +37,9 @@ export const AboutSection = () => {
           <CardContent>
             <div className="space-y-3">
               <div>
-                <h4 className="font-semibold">B.S. Information Technology</h4>
-                <p className="text-sm text-muted-foreground">Central Luzon College of Sciende and Technology</p>
-                <p className="text-xs text-muted-foreground mt-1">2022 - Present</p>
+                <h4 className="font-semibold">{education.degree}</h4>
+                <p className="text-sm text-muted-foreground">{education.institution}</p>
+                <p className="text-xs text-muted-foreground mt-1">{education.period}</p>
               </div>
             </div>
           </CardContent>
@@ -52,14 +51,12 @@ export const AboutSection = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
-              <div className="flex justify-between">
-                <span className="font-medium">Tagalog</span>
-                <span className="text-sm text-muted-foreground">Native</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="font-medium">English</span>
-                <span className="text-sm text-muted-foreground">Conversational</span>
-              </div>
+              {languages.map((language) => (
+                <div key={language.name} className="flex justify-between">
+                  <span className="font-medium">{language.name}</span>
+                  <span className="text-sm text-muted-foreground">{language.proficiency}</span>
+                </div>
+              ))}
             </div>
           </CardContent>
         </Card>
