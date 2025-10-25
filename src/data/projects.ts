@@ -7,6 +7,16 @@ import nutrimateAddMealImage from "@/assets/Projects/Nutrimate/AddMeal.png";
 import nutrimateSearchMealImage from "@/assets/Projects/Nutrimate/SearchMeal.png";
 import nutrimateHistoryImage from "@/assets/Projects/Nutrimate/History.png";
 import nutrimateProfileImage from "@/assets/Projects/Nutrimate/Profile.png";
+import saasLanding1Image from "@/assets/Projects/SaaS/Landing1.png";
+import saasLoginImage from "@/assets/Projects/SaaS/Login.png";
+import saasDashboardImage from "@/assets/Projects/SaaS/Dashboard.png";
+import saasProductsImage from "@/assets/Projects/SaaS/Products.png";
+import saasAddProductsImage from "@/assets/Projects/SaaS/Add_Products.png";
+import saasCategoriesImage from "@/assets/Projects/SaaS/Categories.png";
+import saasSuppliersImage from "@/assets/Projects/SaaS/Suppliers.png";
+import saasAddSuppliersImage from "@/assets/Projects/SaaS/Add_Suppliers.png";
+import saasActivitiesImage from "@/assets/Projects/SaaS/Activities.png";
+import saasAddActivitiesImage from "@/assets/Projects/SaaS/Add_Activities.png";
 
 export const projects: Project[] = [
   {
@@ -34,6 +44,23 @@ export const projects: Project[] = [
       { src: nutrimateSearchMealImage, alt: "Search Meal" },
       { src: nutrimateHistoryImage, alt: "History" },
       { src: nutrimateProfileImage, alt: "Profile" },
+    ],
+  },
+  {
+    title: "Inventory Management SaaS",
+    description: "A modern, multi-tenant inventory management system that enables businesses to track products, manage stock levels, monitor supplier relationships, and analyze inventory activities in real-time. Features include low-stock alerts, activity tracking with automatic stock adjustments, CSV export capabilities, and a comprehensive dashboard with analytics. Built with enterprise-grade security including Auth0 authentication, rate limiting, and data isolation per tenant.",
+    tags: ["React 19", "TypeScript", "TanStack Query", "Tailwind CSS", "Node.js", "Express.js", "MongoDB", "Mongoose", "Auth0", "Vite", "Axios", "Winston", "Helmet.js", "Joi"],
+    image: saasLanding1Image,
+    carouselImages: [
+      { src: saasLoginImage, alt: "Login" },
+      { src: saasDashboardImage, alt: "Dashboard" },
+      { src: saasProductsImage, alt: "Products" },
+      { src: saasAddProductsImage, alt: "Add Products" },
+      { src: saasCategoriesImage, alt: "Categories" },
+      { src: saasSuppliersImage, alt: "Suppliers" },
+      { src: saasAddSuppliersImage, alt: "Add Suppliers" },
+      { src: saasActivitiesImage, alt: "Activities" },
+      { src: saasAddActivitiesImage, alt: "Add Activities" },
     ],
   },
 ];
