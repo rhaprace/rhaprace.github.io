@@ -31,7 +31,7 @@ export const About = memo(() => {
             >
               <img
                 src={profileImage}
-                alt="Profile"
+                alt="Rafael Race - Full Stack Developer specializing in React, TypeScript, and Node.js"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover"
