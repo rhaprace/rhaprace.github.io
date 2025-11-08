@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rhaprace.github.io/</loc>
-    <lastmod>2025-01-08</lastmod>
+    <lastmod>2025-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://rhaprace.github.io/projects/portfolio.png</image:loc>
-      <image:title>Rafael Race Portfolio</image:title>
-      <image:caption>Full Stack Developer Portfolio featuring React, TypeScript, and Node.js projects</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://rhaprace.github.io/projects/quake-safe.png</image:loc>
-      <image:title>QuakeSafe Project</image:title>
-      <image:caption>Earthquake safety and preparedness application</image:caption>
-    </image:image>
   </url>
-
-  <!-- Projects Section (if you add individual project pages in the future) -->
-  <!-- For now, all content is on the main page, so we only list the homepage -->
-  
 </urlset>
 
