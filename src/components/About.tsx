@@ -1,6 +1,5 @@
 import { memo } from "react";
 import { useAboutAnimation } from "../hooks/useAboutAnimation";
-import profileImage from "../assets/profile.jpg";
 import { PositionedOrbital } from "./PositionedOrbital";
 import { SectionTitle } from "./SectionTitle";
 import { Paragraph } from "./Paragraph";
@@ -30,7 +29,7 @@ export const About = memo(() => {
               }}
             >
               <img
-                src={profileImage}
+                src="https://api.dicebear.com/9.x/notionists/svg?seed=Rafael%20Race&hair=variant15"
                 alt="Rafael Race - Full Stack Developer specializing in React, TypeScript, and Node.js"
                 loading="lazy"
                 decoding="async"
