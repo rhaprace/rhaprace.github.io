@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { About } from "./components/About";
 import { Experience } from "./components/Experience";
+import { Testimonials } from "./components/Testimonials";
 import { Projects } from "./components/Projects";
 import { Footer } from "./components/Footer";
 import { SectionSeparator } from "./components/SectionSeparator";
@@ -50,6 +51,8 @@ export const App = () => {
         <About />
         <SectionSeparator />
         <Experience />
+        <SectionSeparator />
+        <Testimonials />
         <SectionSeparator />
         <Projects />
       </main>

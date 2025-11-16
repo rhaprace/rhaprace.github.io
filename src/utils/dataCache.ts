@@ -1,6 +1,7 @@
 import { projects as projectsData } from "../data/projects";
 import { experiences as experiencesData } from "../data/experience";
 import { codeSymbols as symbolsData } from "../data/symbols";
+import { testimonials as testimonialsData } from "../data/testimonials";
 
 export const projects = Object.freeze(projectsData.map(p => Object.freeze(p)));
 
@@ -11,4 +12,6 @@ export const experiences = Object.freeze(experiencesData.map(e => Object.freeze(
 })));
 
 export const codeSymbols = Object.freeze(symbolsData.map(s => Object.freeze(s)));
+
+export const testimonials = Object.freeze(testimonialsData.map(t => Object.freeze(t)));
 
