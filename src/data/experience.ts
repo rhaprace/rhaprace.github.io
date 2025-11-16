@@ -34,5 +34,25 @@ export const experiences: ExperienceItem[] = [
       "Lolli",
     ],
   },
+  {
+    id: "glowtech-shopify",
+    title: "Shopify Developer",
+    company: "Glowtech, Co.",
+    location: "Remote",
+    period: "January 2025 (2 weeks)",
+    status: "past",
+    responsibilities: [
+      "Developed custom Shopify theme features and enhancements.",
+      "Implemented responsive design improvements for better mobile experience.",
+      "Enhanced user experience and optimized site performance.",
+    ],
+    technologies: [
+      "Shopify",
+      "Liquid",
+      "JavaScript",
+      "CSS",
+      "HTML",
+    ],
+  },
 ];
 

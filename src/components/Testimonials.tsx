@@ -37,9 +37,6 @@ export const Testimonials = memo(() => {
                     <h3 className="text-3xl md:text-4xl lg:text-5xl font-black mb-3 leading-tight">
                       {testimonial.clientName}
                     </h3>
-                    <p className="text-xl md:text-2xl text-gray-700 font-semibold mb-2">
-                      {testimonial.clientTitle}
-                    </p>
                     {testimonial.clientCompany && (
                       <p className="text-lg md:text-xl text-gray-600 font-medium">
                         {testimonial.clientCompany}
