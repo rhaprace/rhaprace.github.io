@@ -29,7 +29,7 @@ export const About = memo(() => {
               }}
             >
               <img
-                src="https://api.dicebear.com/9.x/notionists/svg?seed=Rafael%20Race&hair=variant15"
+                src="/profile.png"
                 alt="Rafael Race - Full Stack Developer specializing in React, TypeScript, and Node.js"
                 loading="lazy"
                 decoding="async"
