@@ -36,7 +36,7 @@ export const experiences: ExperienceItem[] = [
   },
   {
     id: "glowtech-shopify",
-    title: "Shopify Developer",
+    title: "Web Developer",
     company: "Glowtech, Co.",
     location: "Remote",
     period: "January 2025 (2 weeks)",
