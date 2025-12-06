@@ -11,6 +11,15 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
+    title: "rhap-env-guardian",
+    description: "A production-ready, zero-dependency environment variable validator with full TypeScript support. Provides compile-time and runtime safety with type inference, universal compatibility for Node.js and Vite/React, and descriptive error messages.",
+    tags: ["TypeScript", "Node.js", "NPM Package", "Vite", "React", "Type Safety", "Zero Dependencies"],
+    images: ["/projects/env-guardian.png"],
+    liveUrl: "https://www.npmjs.com/package/env-guardian",
+    repoUrl: "https://github.com/rhaprace/env-guardian",
+  },
+  {
+    id: 2,
     title: "QuakeSafe",
     description: "An earthquake safety and preparedness application with interactive maps, real-time alerts, and offline-first capabilities for emergency situations",
     tags: ["React 19", "TypeScript", "Vite", "Tailwind CSS", "shadcn/ui", "TanStack Query", "Leaflet", "i18next", "PWA", "Vercel"],
@@ -19,7 +28,7 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/rhaprace/quakesafe",
   },
   {
-    id: 2,
+    id: 3,
     title: "Portfolio",
     description: "My personal portfolio website built with React, TypeScript, and Tailwind CSS. Features include a hero section, about me section, experience section, and a projects section.",
     tags: ["React 19", "TypeScript", "Vite", "Tailwind CSS", "GSAP", "React Responsive"],
@@ -28,7 +37,7 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/rhaprace/rhaprace.github.io",
   },
   {
-    id: 3,
+    id: 4,
     title: "NutriMate",
     description: "NutriMate is a smart nutrition tracking and meal logging web application designed to help users monitor their daily food intake, track macronutrients, and achieve their health goals.",
     tags: ["React 18", "TypeScript" ,"Zustand","Tailwind CSS","MongoDB","Jotai","Lucide React","Zod","Node.js","Express.js","node-cron","JWT"],
