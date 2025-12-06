@@ -15,7 +15,7 @@ export const projects: Project[] = [
     description: "A production-ready, zero-dependency environment variable validator with full TypeScript support. Provides compile-time and runtime safety with type inference, universal compatibility for Node.js and Vite/React, and descriptive error messages.",
     tags: ["TypeScript", "Node.js", "NPM Package", "Vite", "React", "Type Safety", "Zero Dependencies"],
     images: ["/projects/env-guardian.png"],
-    liveUrl: "https://www.npmjs.com/package/env-guardian",
+    liveUrl: "https://www.npmjs.com/package/rhap-env-guardian",
     repoUrl: "https://github.com/rhaprace/env-guardian",
   },
   {
