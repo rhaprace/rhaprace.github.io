@@ -15,7 +15,7 @@ export const projects: Project[] = [
     description: "A Next.js web application built with the T3 Stack that automatically generates legally compliant business policies (Privacy Policy, Terms & Conditions, Refund/Shipping Policy) tailored for Philippine e-commerce businesses. Ensures compliance with Philippine Data Privacy Act (DPA) 2012.",
     tags: ["T3 Stack", "Next.js 15", "React 19", "TypeScript", "tRPC", "Turso", "Drizzle ORM", "TailwindCSS", "Framer Motion", "PDF Export", "SEO", "Vercel"],
     images: ["/projects/poliswift.png"],
-    liveUrl: "https://poliswift.vercel.app",
+    liveUrl: "https://poli-swift.vercel.app",
   },
   {
     id: 2,
